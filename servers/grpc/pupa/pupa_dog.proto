@@ -1,0 +1,16 @@
+syntax = "proto3";
+package pupa;
+
+option go_package = "./pupa;pupa";
+
+service DogService {
+  rpc DogIsGoodBoyV1(DogIsGoodBoyV1Request) returns (DogIsGoodBoyV1Response);
+}
+
+message DogIsGoodBoyV1Request {
+  string name = 1;
+}
+
+message DogIsGoodBoyV1Response {
+  bool is_good_boy = 1;
+}

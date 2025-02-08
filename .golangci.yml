@@ -1,0 +1,22 @@
+run:
+  concurrency: 1
+  deadline: 1m
+  issues-exit-code: 1
+  tests: true
+
+output:
+  formats: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true
+
+linters-settings:
+  govet:
+    shadow: enable-all
+  gofmt:
+    simplify: true
+  errcheck:
+    check-type-assertions: true
+  gocyclo:
+    min-complexity: 10
+  misspell:
+    locale: US
