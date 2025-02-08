@@ -1,8 +1,19 @@
-.PHONY: run
-run:
+.PHONY: mod
+mod:
 	go mod tidy -go=1.23 -compat=1.23
 	go mod vendor
+
+.PHONY: run
+run: mod
 	source .env && go run -mod=vendor main.go || true
+
+.PHONY: run
+help: mod
+	source .env && go run -mod=vendor main.go help || true
+
+.PHONY: wof
+wof: mod
+	source .env && go run -mod=vendor main.go wof || true
 
 .PHONY: lint
 lint:
@@ -10,7 +21,7 @@ lint:
 
 .PHONY: lint-fix
 lint-fix:
-	goimports -local github.com/thrownew/go-middlewares -w .
+	goimports -local pupa -w .
 	go fmt ./...
 	golangci-lint run -v
 

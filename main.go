@@ -6,9 +6,11 @@ import (
 	"log/slog"
 	"os"
 	"os/signal"
-	"pupa/app"
 	"syscall"
 	"time"
+
+	"pupa/app"
+	"pupa/cmd/wof"
 
 	"pupa/databases"
 	"pupa/deps"
@@ -40,6 +42,7 @@ func main() {
 			return c.Invoke(run)
 		},
 	}
+	cmd.AddCommand(wof.NewCommand())
 	if err := cmd.Execute(); err != nil {
 		panic(err)
 	}
