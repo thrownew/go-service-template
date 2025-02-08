@@ -44,6 +44,8 @@ The DI container handles all dependency wiring, allowing packages to remain isol
 
 ## Dev environment
 
+Dev environment is based on Docker Compose for now. Maybe in the future we will use `kind` for Kubernetes.
+
 Up dev and connect to the database:
 ```bash
 make up
@@ -67,7 +69,12 @@ Run the service:
 make run
 ```
 
-Try to make grpc calls:
+Run all tests:
+```bash
+make test
+```
+
+Try to make grpc calls manually:
 ```bash
 grpcurl -plaintext -d '{"name": "Buddy"}' 127.0.0.1:8080 pupa.DogService.DogIsGoodBoyV1
 grpcurl -plaintext -d '{"name": "Undefined"}' 127.0.0.1:8080 pupa.DogService.DogIsGoodBoyV1

@@ -5,13 +5,12 @@ import (
 	"fmt"
 	"testing"
 
-	"pupa/servers"
-
 	"github.com/stretchr/testify/require"
 
 	"pupa/databases"
 	"pupa/deps"
 	"pupa/logs"
+	"pupa/servers"
 )
 
 type (
