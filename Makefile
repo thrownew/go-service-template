@@ -29,6 +29,19 @@ lint-fix:
 generate:
 	go generate ./...
 
+.PHONY: test-unit
+test-unit:
+	go clean -testcache
+	go test -race -v -run Unit ./...
+
+.PHONY: test-unit
+test-integration:
+	go clean -testcache
+	go test -race -v -run Integration ./...
+
+.PHONY: test
+test: test-unit test-integration
+
 .PHONY: build
 build:
 	docker build -t pupa .
